@@ -34,7 +34,9 @@ function Tela1({ navigation }) {
           secureTextEntry
         />
 
-         <TouchableOpacity style={styles1.button}>
+         <TouchableOpacity style={styles1.button}
+          onPress={() => navigation.navigate('Anuncio')}
+         >
           <Text style={styles1.buttonText}>Entrar</Text>
         </TouchableOpacity>
         <View style={styles1.footer}>
@@ -92,7 +94,9 @@ Crie sua conta e use o espaço para comprar{'\n'}itens variados e vender seu pro
           placeholder="Confirmar senha"
           secureTextEntry
         />
-         <TouchableOpacity style={styles2.button}>
+         <TouchableOpacity style={styles2.button}
+          onPress={() => navigation.navigate('Anuncio')}
+         >
           <Text style={styles2.buttonText}>Criar</Text>
         </TouchableOpacity>
         <Text style={styles2.label}>
@@ -108,6 +112,49 @@ Crie sua conta e use o espaço para comprar{'\n'}itens variados e vender seu pro
   );
 }
 
+function Tela3({ navigation }) {
+  return (
+    <View style={styles3.container}>
+      <Image style={styles3.logo} source={require('./assets/produto2.png')} /> 
+
+    <View style={styles3.perfil}>
+      <Image style={styles3.logo2} source={require('./assets/avatar.png')} /> 
+      <Text style={styles3.perfiltext}>  Makenna Baptista</Text>
+    </View>
+    <View style={styles3.produto}>
+      <Text style={styles3.tittle}>Bicicleta</Text>
+      <Text style={styles3.preço}>R$ 120,00</Text>
+    </View>
+    <Text style={styles3.text}>Um esporte que vem ganhando adeptos ao longo do tempo é o ciclismo. Praticamente todas as grandes cidades do Brasil já possuem ciclovias, e não é raro vermos pessoas ir para o trabalho de bicicleta. Você pode tanto usar para ir trabalhar como para lazer também.</Text>
+    <View style={styles3.troca}>
+      <Text style={styles3.trocatitle}>Aceita troca?   </Text>
+      <Text style={styles3.troc}>Sim</Text> 
+    </View>
+
+    <View style={styles3.pagamento}>
+      <Text style={styles3.pagatitle}>Meios de pagamento:</Text>
+      <Text style={styles3.paga}><Icon name="barcode" size={12} color="black" />
+      Boleto</Text>
+      <Text style={styles3.paga}><Icon name="qrcode" size={12} color="black" />
+      Pix</Text>
+      <Text style={styles3.paga}><Icon name="money" size={12} color="black" />
+      Dinheiro</Text>
+      <Text style={styles3.paga}><Icon name="credit-card" size={12} color="black" />
+      Cartão de Crédito</Text>
+      <Text style={styles3.paga}><Icon name="bank" size={12} color="black" />
+      Depósito Bancário</Text>
+    </View>
+    <View style={styles3.footer}>
+          <Text style={styles3.preço}>R$ 120,00</Text>
+         <TouchableOpacity style={styles3.button}>
+          <Text style={styles3.buttonText}><Icon name="whatsapp" size={12} color="white" />
+        Entrar em contato</Text>
+        </TouchableOpacity>
+    </View>
+    </View>
+  );
+}
+
 
 
 
@@ -119,6 +166,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="Entrar" component={Tela1} />
         <Stack.Screen name="Registrar" component={Tela2} />
+          <Stack.Screen name="Anuncio" component={Tela3} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -266,4 +314,93 @@ const styles2 = StyleSheet.create({
   buttonText2: {
     color: 'black'
   },
+});
+
+const styles3 = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#edecee',
+    width: '100%',
+  },
+  logo:{
+    width: '100%',
+    height: 200,
+  },
+  perfil: {
+    flexDirection: 'row',
+    width: 270,
+    alignItems: 'center',
+    marginLeft: 40,
+    marginBottom: 20,
+    marginTop: 20,
+  },
+  perfiltext: {
+    fontSize: 14,
+  },
+  logo2: {
+    width: 20,
+    height: 20,
+  },
+  produto: {
+    flexDirection: 'row',
+    width: 270,
+    marginBottom: 20,
+    justifyContent: 'space-between',
+  },
+  tittle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  preço: {
+    color: '#6e7ec3',
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+  text: {
+    marginBottom: '10%',
+    marginLeft: 20, 
+    color: 'gray',
+  },
+  troca: {
+    flexDirection: 'row',
+    marginLeft: 10, 
+    marginBottom:20,  
+    width: 270,
+  },
+  trocatitle: {
+    fontWeight: 'bold',
+  },
+  pagamento: {
+    width: 270,
+    marginLeft: 10, 
+    },
+  pagatitle: {
+  fontWeight: 'bold',
+  },
+  paga: {
+    marginTop: 8,
+  },
+    button: {
+    backgroundColor: '#6878c0',
+    padding: 10,
+    width: '50%',
+    marginTop: 30,
+    textAlign: 'center', 
+    borderRadius: 5,
+    marginBottom: 50,
+  },
+  buttonText: {
+    color: 'white',
+  },
+  footer: {
+    marginTop: 30,
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    alignItems: 'center', 
+    width: '100%',
+    justifyContent: 'space-between',
+    padding: 10,
+  }
 });
